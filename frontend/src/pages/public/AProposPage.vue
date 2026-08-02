@@ -48,14 +48,14 @@ const stats = [
           </p>
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div
-            v-for="stat in stats"
-            :key="stat.id"
-            class="rounded-[24px] border border-slate-200 bg-white p-6 text-center shadow-soft"
-          >
-            <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">{{ stat.value }}</p>
-            <p class="mt-2 text-sm uppercase tracking-[0.12em] text-slate-500">{{ stat.label }}</p>
+        <div class="flex items-center justify-center">
+          <div class="rounded-[36px] border border-slate-200 bg-white p-8 shadow-large flex items-center gap-6 max-w-sm w-full">
+            <img src="/images/school-facade.png" alt="Logo" class="w-24 h-24 rounded-full object-cover border" />
+            <div>
+              <p class="text-sm text-slate-500">Notre identité</p>
+              <h3 class="text-xl font-semibold text-slate-900">La nouvelle institution</h3>
+              <p class="text-sm text-slate-600 mt-1">Exigence éducative · Innovation · Bienveillance</p>
+            </div>
           </div>
         </div>
       </div>
