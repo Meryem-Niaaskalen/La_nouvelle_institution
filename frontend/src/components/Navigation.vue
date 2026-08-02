@@ -98,24 +98,25 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 40;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(15, 23, 42, 0.06);
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .navbar-scrolled {
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.98);
 }
 
 .navbar-container {
   max-width: 1520px;
   margin: 0 auto;
-  padding: 16px 40px;
+  padding: 14px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 96px;
+  min-height: 92px;
 }
 
 .navbar-brand {
@@ -251,11 +252,17 @@ onUnmounted(() => {
   gap: 10px;
   padding: 0.85rem 1.2rem;
   border-radius: 999px;
-  background: #f57c00;
+  background: linear-gradient(135deg, #f57c00, #fb923c);
   color: #fff;
   font-weight: 700;
   text-decoration: none;
   box-shadow: 0 12px 24px rgba(245, 124, 0, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(245, 124, 0, 0.28);
 }
 
 .navbar-cta-icon {

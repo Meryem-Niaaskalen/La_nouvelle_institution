@@ -76,6 +76,16 @@ defineProps({
     animation: sectionTitleIn .6s cubic-bezier(.2,.9,.3,1) both;
 }
 
+.section-title::after {
+  content: '';
+  display: block;
+  width: 96px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(245,124,0,0.15), rgba(245,124,0,0.9), rgba(245,124,0,0.15));
+}
+
 .section-subtitle {
     @apply mx-auto max-w-2xl text-base sm:text-lg leading-8 text-slate-600;
     opacity: .95;

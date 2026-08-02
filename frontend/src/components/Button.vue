@@ -43,6 +43,10 @@ defineProps({
   @apply cursor-pointer;
 }
 
+.btn:hover {
+  transform: translateY(-1px);
+}
+
 /* Sizes */
 .btn-sm {
   @apply px-3 py-1 text-sm;
@@ -58,7 +62,7 @@ defineProps({
 
 /* Variants */
 .btn-primary {
-  @apply bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400 text-white hover:from-primary-700 hover:via-primary-600 hover:to-primary-500 active:from-primary-800 active:via-primary-700 active:to-primary-600 shadow-lg;
+  @apply bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400 text-white hover:from-primary-700 hover:via-primary-600 hover:to-primary-500 active:from-primary-800 active:via-primary-700 active:to-primary-600 shadow-lg shadow-primary-500/20;
 }
 
 .btn-secondary {
@@ -66,7 +70,7 @@ defineProps({
 }
 
 .btn-outline {
-  @apply bg-white border-2 border-primary-500 text-primary-600 hover:bg-primary-50 active:bg-primary-100;
+  @apply bg-white border-2 border-primary-500 text-primary-600 hover:bg-primary-50 hover:-translate-y-0.5 active:bg-primary-100;
 }
 
 .btn-ghost {

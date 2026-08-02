@@ -23,7 +23,7 @@ defineProps({
 <style scoped>
   @reference '../styles/tailwind.css';
 .badge {
-  @apply inline-flex items-center justify-center font-semibold rounded-full whitespace-nowrap;
+  @apply inline-flex items-center justify-center font-semibold rounded-full whitespace-nowrap border border-transparent;
 }
 
 /* Sizes */
@@ -41,7 +41,7 @@ defineProps({
 
 /* Variants */
 .badge-primary {
-  @apply bg-primary-100 text-primary-700;
+  @apply bg-primary-100 text-primary-700 border-primary-200;
 }
 
 .badge-secondary {
