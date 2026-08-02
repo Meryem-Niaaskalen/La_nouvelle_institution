@@ -49,11 +49,25 @@ const stats = [
         </div>
 
         <div class="flex items-center justify-center">
-          <div class="rounded-[36px] border border-slate-200 bg-white p-8 shadow-large flex flex-col items-center gap-4 max-w-sm w-full text-center">
-            <img src="/images/logo-school-3.png" alt="Logo La nouvelle institution" class="h-36 w-36 rounded-full border border-white/20 bg-white object-contain p-1" />
-            <div>
-              <h3 class="text-xl font-semibold text-slate-900">La nouvelle institution</h3>
-              <p class="text-sm text-slate-600 mt-1">Exigence éducative · Innovation · Bienveillance</p>
+          <div class="w-full max-w-md rounded-2xl border border-orange-100 bg-white p-8 shadow-large flex flex-col items-center text-center overflow-hidden">
+            <img src="/images/logo-school-3.png" alt="Logo La nouvelle institution" class="h-44 w-44 rounded-full border border-white/20 bg-white object-contain p-2 shadow-sm" />
+
+            <h3 class="mt-6 text-2xl sm:text-3xl font-extrabold text-slate-900">La nouvelle institution</h3>
+
+            <div class="mt-3 mb-3 w-14 h-1 rounded bg-orange-400"></div>
+
+            <p class="text-sm text-slate-500">Exigence éducative <span class="mx-2 text-orange-400">•</span> Innovation <span class="mx-2 text-orange-400">•</span> Bienveillance</p>
+
+            <div class="mt-6 w-full">
+              <svg viewBox="0 0 1440 120" class="w-full" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="0%">
+                    <stop offset="0%" stop-color="#fff7f2" />
+                    <stop offset="100%" stop-color="#ffd0a0" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,40 C200,120 400,0 720,60 C1040,120 1240,20 1440,80 L1440,120 L0,120 Z" fill="url(#g1)" />
+              </svg>
             </div>
           </div>
         </div>
