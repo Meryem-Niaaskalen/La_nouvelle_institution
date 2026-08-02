@@ -39,9 +39,8 @@ defineProps({
 <style scoped>
   @reference '../styles/tailwind.css';
 .btn {
-  @apply px-4 py-2 rounded-lg font-semibold transition-smooth focus-ring;
-  @apply inline-flex items-center justify-center gap-2;
-  @apply cursor-pointer border border-transparent;
+  @apply inline-flex items-center justify-center gap-2 rounded-[20px] border border-transparent px-4 py-2 font-semibold shadow-sm transition-all duration-200 focus-ring;
+  @apply cursor-pointer;
 }
 
 /* Sizes */
@@ -59,19 +58,19 @@ defineProps({
 
 /* Variants */
 .btn-primary {
-  @apply bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-700;
+  @apply bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400 text-white hover:from-primary-700 hover:via-primary-600 hover:to-primary-500 active:from-primary-800 active:via-primary-700 active:to-primary-600 shadow-lg;
 }
 
 .btn-secondary {
-  @apply bg-gray-100 text-gray-900 hover:bg-gray-200 active:bg-gray-300;
+  @apply bg-slate-100 text-slate-900 hover:bg-slate-200 active:bg-slate-300;
 }
 
 .btn-outline {
-  @apply bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-50 active:bg-primary-100;
+  @apply bg-white border-2 border-primary-500 text-primary-600 hover:bg-primary-50 active:bg-primary-100;
 }
 
 .btn-ghost {
-  @apply bg-transparent text-primary-500 hover:bg-gray-100 active:bg-gray-200;
+  @apply bg-transparent text-primary-600 hover:bg-slate-100 active:bg-slate-200;
 }
 
 .btn-danger {

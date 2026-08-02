@@ -1,101 +1,101 @@
-<script setup>
+﻿<script setup>
 import { Section, Card, Badge } from '@/components'
 
 const values = [
   {
+    icon: '',
     title: 'Excellence académique',
-    description: 'Un encadrement rigoureux et des parcours adaptés à chaque élève.',
+    description: 'Un encadrement exigeant et des parcours pédagogiques conçus pour former des leaders confiants et curieux.',
   },
   {
-    title: 'Éducation moderne',
-    description: 'Des outils numériques, des laboratoires et des méthodes innovantes.',
+    icon: '✨',
+    title: 'Pédagogie innovante',
+    description: 'Des classes interactives, des outils digitaux et des projets ancrés dans les enjeux du monde contemporain.',
   },
   {
+    icon: '',
     title: 'Épanouissement humain',
-    description: 'Des valeurs de respect, d’inclusion et de responsabilité citoyenne.',
+    description: 'Une communauté bienveillante, ouverte et inclusive où chaque élève est encouragé à s’exprimer et à grandir.',
   },
 ]
 
-const milestones = [
-  {
-    id: 1,
-    year: '1997',
-    icon: '🏫',
-    title: 'Création de l’établissement',
-    description: 'Naissance d’une école ambitieuse portée par une vision d’excellence.',
-    items: ['Équipe fondatrice', 'Première promotion', 'Projet éducatif clair'],
-  },
-  {
-    id: 2,
-    year: '2005',
-    icon: '🎓',
-    title: 'Expansion pédagogique',
-    description: 'Développement des filières et renforcement des méthodes d’enseignement.',
-    items: ['Programmes enrichis', 'Infrastructures modernisées', 'Succès académique constant'],
-  },
-  {
-    id: 3,
-    year: '2026',
-    icon: '💻',
-    title: 'École du futur',
-    description: 'Une institution connectée, ouverte et tournée vers l’avenir des élèves.',
-    items: ['Plateforme numérique', 'Culture scientifique', 'Partenariats locaux et internationaux'],
-  },
+const stats = [
+  { id: 1, label: 'Années d’expérience', value: '25+', accent: 'bg-sky-50 text-sky-700' },
+  { id: 2, label: 'Élèves accompagnés', value: '500+', accent: 'bg-emerald-50 text-emerald-700' },
+  { id: 3, label: 'Enseignants qualifiés', value: '35', accent: 'bg-violet-50 text-violet-700' },
+  { id: 4, label: 'Programmes certifiés', value: '12', accent: 'bg-amber-50 text-amber-700' },
 ]
+
 </script>
 
 <template>
-  <div class="bg-gray-50">
-    <Section title="À propos de La nouvelle institution" subtitle="Une école de confiance, de qualité et d’excellence depuis plus de 25 ans.">
-      <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-start">
-        <div class="rounded-3xl border border-gray-200 bg-white p-8 shadow-soft">
-          <Badge label="Notre identité" class="mb-4" />
-          <p class="text-lg text-gray-700 leading-8">
-            La nouvelle institution est un établissement d’enseignement de référence, reconnu pour la qualité de ses formations,
-            la richesse de sa vie scolaire et l’accompagnement personnalisé offert à chaque élève.
+  <div class="bg-slate-50">
+    <Section
+      title="À propos de La nouvelle institution"
+      subtitle="Un établissement de référence, conjuguant exigence éducative, innovation et bienveillance depuis plus de 25 ans."
+    >
+      <div class="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] items-start">
+        <div class="rounded-[36px] border border-slate-200 bg-white p-12 shadow-large">
+          <Badge label="Notre identité" class="mb-6" />
+          <h2 class="text-3xl sm:text-4xl font-semibold text-slate-900 mb-5">Une pédagogie exigeante, une expérience humaine chaleureuse.</h2>
+          <p class="text-lg leading-8 text-slate-700 mb-6">
+            La nouvelle institution incarne une vision éducative moderne : excellence académique,
+            accompagnement personnalisé et développement global de chaque élève.
           </p>
-          <p class="mt-4 text-lg text-gray-700 leading-8">
-            Nous formons des jeunes autonomes, curieux, responsables et prêts à réussir dans un monde en constante évolution.
+          <p class="text-lg leading-8 text-slate-700">
+            Nous mettons en œuvre des parcours structurés et innovants pour préparer des jeunes responsables,
+            curieux et résilients, capables de réussir dans un monde en constante évolution.
           </p>
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-          <Card title="+25 ans" description="D’expérience éducative et d’engagement institutionnel." badge="Expérience" />
-          <Card title="500+" description="Élèves accompagnés chaque année dans leur parcours." badge="Élèves" />
-        </div>
-      </div>
-    </Section>
-
-    <Section title="Nos valeurs" subtitle="Des fondements solides pour une éducation de qualité" :dark="true">
-      <div class="grid gap-6 md:grid-cols-3">
-        <Card v-for="value in values" :key="value.title" :title="value.title" :description="value.description" :hoverable="true" />
-      </div>
-    </Section>
-
-    <Section title="Notre histoire" subtitle="Un parcours marqué par la continuité, l’innovation et la confiance">
-      <div class="rounded-3xl border border-gray-200 bg-white p-4 md:p-8 shadow-soft">
-        <div class="relative">
-          <div class="absolute left-6 top-0 bottom-0 hidden w-0.5 bg-primary-200 md:block" />
-          <div class="space-y-6">
-            <div v-for="item in milestones" :key="item.id" class="relative md:pl-12">
-              <div class="absolute left-0 top-2 hidden h-5 w-5 rounded-full border-4 border-white bg-primary-500 md:block" />
-              <div class="rounded-2xl border border-gray-200 bg-gray-50 p-6">
-                <div class="mb-3 flex items-center gap-3">
-                  <span class="text-2xl">{{ item.icon }}</span>
-                  <div>
-                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary-600">{{ item.year }}</p>
-                    <h3 class="text-xl font-semibold text-gray-900">{{ item.title }}</h3>
-                  </div>
-                </div>
-                <p class="text-gray-700 leading-7">{{ item.description }}</p>
-                <ul class="mt-4 space-y-2 text-sm text-gray-600">
-                  <li v-for="detail in item.items" :key="detail">• {{ detail }}</li>
-                </ul>
-              </div>
-            </div>
+        <div class="grid gap-4">
+          <div
+            v-for="stat in stats"
+            :key="stat.id"
+            class="rounded-[24px] border border-slate-200 bg-slate-50 p-6 shadow-soft"
+          >
+            <p class="text-4xl font-semibold text-slate-900">{{ stat.value }}</p>
+            <p class="mt-3 text-sm uppercase tracking-[0.25em] text-slate-500">{{ stat.label }}</p>
           </div>
+        </div>
+      </div>
+    </Section>
+
+    <Section title="Mission & vision" subtitle="Une éducation construite autour de valeurs fortes et d’une ambition collective.">
+      <div class="grid gap-6 md:grid-cols-3">
+        <div
+          v-for="value in values"
+          :key="value.title"
+          class="rounded-[32px] border border-slate-200 bg-white p-8 shadow-soft transition hover:shadow-medium"
+        >
+          <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-2xl text-slate-800">
+            {{ value.icon }}
+          </div>
+          <h3 class="text-xl font-semibold text-slate-900 mb-3">{{ value.title }}</h3>
+          <p class="text-slate-600 leading-7">{{ value.description }}</p>
+        </div>
+      </div>
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        <div class="rounded-[32px] border border-slate-200 bg-white p-8 shadow-large">
+          <Badge label="Mission" class="mb-4" />
+          <h3 class="text-2xl font-semibold text-slate-900 mb-3">Former des citoyens responsables et performants.</h3>
+          <p class="text-slate-600 leading-7">
+            Nous accompagnons chaque élève dans un parcours exigeant et bienveillant, en développant ses compétences intellectuelles,
+            sociales et émotionnelles pour qu’il gagne en autonomie et en assurance.
+          </p>
+        </div>
+
+        <div class="rounded-[32px] border border-slate-200 bg-white p-8 shadow-large">
+          <Badge label="Vision" class="mb-4" />
+          <h3 class="text-2xl font-semibold text-slate-900 mb-3">Construire une école agile, innovante et durable.</h3>
+          <p class="text-slate-600 leading-7">
+            Notre vision repose sur une pédagogie moderne, l’intégration du numérique et la valorisation du rapport humain,
+            pour offrir un cadre sécurisé propice à l’épanouissement de chacun.
+          </p>
         </div>
       </div>
     </Section>
   </div>
 </template>
+

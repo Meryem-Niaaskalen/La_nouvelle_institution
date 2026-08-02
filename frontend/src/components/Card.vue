@@ -16,7 +16,7 @@
     </div>
 
     <div class="card-content">
-      <div v-if="badge" class="card-badge">{{ badge }}</div>
+      <div v-if="badge" class="card-badge" :class="badgeClass">{{ badge }}</div>
 
       <h3 v-if="title" class="card-title">{{ title }}</h3>
 
@@ -44,6 +44,7 @@ defineProps({
   description: String,
   image: String,
   badge: String,
+  badgeClass: String,
   hoverable: Boolean,
   clickable: Boolean,
   customClass: String,
@@ -53,29 +54,29 @@ defineProps({
 <style scoped>
   @reference '../styles/tailwind.css';
 .card {
-  @apply bg-white rounded-lg overflow-hidden transition-smooth;
+  @apply bg-white rounded-[32px] overflow-hidden transition-smooth;
 }
 
 /* Variants */
 .card-default {
-  @apply shadow-soft border border-gray-200;
+  @apply shadow-soft border border-slate-200;
 }
 
 .card-elevated {
-  @apply shadow-medium;
+  @apply shadow-large;
 }
 
 .card-outlined {
-  @apply border-2 border-gray-300;
+  @apply border-2 border-slate-200;
 }
 
 .card-filled {
-  @apply bg-gray-50 border border-gray-200;
+  @apply bg-slate-50 border border-slate-200;
 }
 
 /* Hover effect */
 .card-hover {
-  @apply hover:shadow-large hover:-translate-y-1;
+  @apply hover:shadow-xl hover:-translate-y-1;
 }
 
 .card-clickable {
@@ -84,7 +85,7 @@ defineProps({
 
 /* Image */
 .card-image {
-  @apply w-full h-48 overflow-hidden bg-gray-200;
+  @apply w-full h-56 overflow-hidden bg-slate-200;
 }
 
 .card-image img {
@@ -97,22 +98,22 @@ defineProps({
 
 /* Content */
 .card-content {
-  @apply p-6;
+  @apply p-8;
 }
 
 /* Badge */
 .card-badge {
-  @apply inline-block px-3 py-1 bg-primary-100 text-primary-600 rounded-full text-xs font-semibold mb-3 uppercase tracking-wide;
+  @apply inline-flex items-center rounded-full bg-primary-50 px-3 py-1.5 text-xs font-semibold text-primary-700 uppercase tracking-[0.24em] mb-3;
 }
 
 /* Title */
 .card-title {
-  @apply text-xl font-semibold text-gray-900 mb-2;
+  @apply text-2xl font-semibold text-slate-900 mb-3;
 }
 
 /* Description */
 .card-description {
-  @apply text-gray-600 text-sm leading-relaxed mb-4;
+  @apply text-slate-600 text-base leading-7 mb-5;
 }
 
 /* Body */
@@ -122,6 +123,6 @@ defineProps({
 
 /* Footer */
 .card-footer {
-  @apply pt-4 border-t border-gray-200;
+  @apply pt-4 border-t border-slate-200;
 }
 </style>

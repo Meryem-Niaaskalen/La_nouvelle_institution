@@ -37,12 +37,6 @@ const routes = [
         meta: { title: 'Galerie' },
       },
       {
-        path: 'activites',
-        name: 'activites',
-        component: () => import('@/pages/public/ActivitesPage.vue'),
-        meta: { title: 'Activités' },
-      },
-      {
         path: 'contact',
         name: 'contact',
         component: () => import('@/pages/public/ContactPage.vue'),

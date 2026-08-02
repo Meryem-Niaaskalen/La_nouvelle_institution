@@ -39,7 +39,7 @@ defineProps({
 <style scoped>
   @reference '../styles/tailwind.css';
 .section {
-  @apply py-section px-6 md:px-8 transition-smooth;
+  @apply py-section px-4 sm:px-6 lg:px-8 transition-smooth;
 }
 
 .section-default {
@@ -55,7 +55,7 @@ defineProps({
 }
 
 .section-dark {
-  @apply bg-gray-900 text-white;
+  @apply bg-slate-950 text-white;
 }
 
 .section-no-padding {
@@ -67,19 +67,23 @@ defineProps({
 }
 
 .section-header {
-  @apply text-center mb-16 md:mb-20;
+  @apply text-center mb-16 md:mb-20 space-y-4;
 }
 
 .section-title {
-  @apply text-4xl md:text-5xl font-semibold font-heading mb-4;
+  @apply mx-auto max-w-3xl text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.02em] text-slate-900;
 }
 
 .section-subtitle {
-  @apply text-lg md:text-xl text-gray-600 max-w-2xl mx-auto;
+  @apply mx-auto max-w-2xl text-base sm:text-lg leading-8 text-slate-600;
+}
+
+.section-dark .section-title {
+  @apply text-white;
 }
 
 .section-dark .section-subtitle {
-  @apply text-gray-300;
+  @apply text-slate-300;
 }
 
 .section-content {
@@ -93,6 +97,10 @@ defineProps({
 
   .section-header {
     @apply mb-12;
+  }
+
+  .section-title {
+    @apply text-3xl;
   }
 }
 </style>

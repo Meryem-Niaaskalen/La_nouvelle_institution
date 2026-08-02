@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 import { RouterView } from 'vue-router'
 import { Navigation } from '@/components'
 </script>
@@ -17,10 +17,16 @@ import { Navigation } from '@/components'
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <!-- School Info -->
           <div>
-            <h3 class="font-bold text-lg mb-4">La nouvelle institution</h3>
-            <p class="text-gray-400 text-sm">Excellence en éducation depuis 1997</p>
+            <div class="flex items-center gap-3 mb-4">
+              <img src="/images/logo-school-3.png" alt="Logo La nouvelle institution" class="h-12 w-12 rounded-full border border-white/20 bg-white object-contain p-1" />
+              <div>
+                <h3 class="font-bold text-lg">La nouvelle institution</h3>
+                <p class="text-gray-400 text-sm">Éducation de qualité depuis 1997</p>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm">Maternelle • Primaire • Collège • Lycée</p>
             <p class="text-gray-400 text-sm mt-2">25 Rue Adawha El Fath 3</p>
-            <p class="text-gray-400 text-sm">Casablanca, Morocco</p>
+            <p class="text-gray-400 text-sm">Casablanca, Maroc</p>
           </div>
 
           <!-- Quick Links -->
@@ -39,8 +45,8 @@ import { Navigation } from '@/components'
           <div>
             <h4 class="font-semibold mb-4">Contact</h4>
             <ul class="space-y-2 text-sm text-gray-400">
-              <li>📞 05228-75634</li>
-              <li>📧 gsni2527@gmail.com</li>
+              <li> 05228-75634</li>
+              <li> gsni2527@gmail.com</li>
               <li class="mt-4">
                 <a href="https://web.facebook.com/profile.php?id=100056328531139&sk=photos" target="_blank" class="hover:text-primary-500">
                   Facebook
@@ -86,3 +92,4 @@ import { Navigation } from '@/components'
   padding-bottom: 0 !important;
 }
 </style>
+

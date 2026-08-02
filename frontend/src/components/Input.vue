@@ -8,7 +8,8 @@
     <div class="input-container">
       <span v-if="prefix" class="input-prefix">{{ prefix }}</span>
 
-      <input
+      <component
+        :is="type === 'textarea' ? 'textarea' : 'input'"
         :id="id"
         :class="[
           'input',
@@ -16,8 +17,9 @@
           { 'input-error': error },
           { 'input-success': success },
           { 'input-disabled': disabled },
+          { 'input-textarea': type === 'textarea' },
         ]"
-        :type="type"
+        :type="type === 'textarea' ? undefined : type"
         :placeholder="placeholder"
         :disabled="disabled"
         :value="modelValue"
@@ -79,21 +81,24 @@ const id = computed(() => props.id || `input-${Math.random().toString(36).substr
 }
 
 .input {
-  @apply w-full px-4 py-2 rounded-lg border transition-smooth focus-ring;
-  @apply text-gray-900 placeholder:text-gray-400;
+  @apply w-full rounded-[20px] border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:border-primary-500 focus:ring-primary-200 focus:ring-2;
 }
 
 /* Variants */
 .input-default {
-  @apply border-gray-300 bg-white hover:border-gray-400 focus:border-primary-500;
+  @apply border-slate-200 bg-slate-50 hover:border-slate-300 focus:border-primary-500;
 }
 
 .input-filled {
-  @apply border-b-2 border-gray-300 bg-gray-50 hover:border-gray-400 focus:border-primary-500 focus:bg-white;
+  @apply border-transparent bg-slate-100 hover:border-slate-300 focus:border-primary-500 focus:bg-white;
 }
 
 .input-outlined {
-  @apply border-2 border-gray-300 hover:border-gray-400 focus:border-primary-500;
+  @apply border-2 border-slate-200 bg-white hover:border-slate-300 focus:border-primary-500;
+}
+
+.input-textarea {
+  @apply min-h-[160px] resize-none;
 }
 
 /* States */
