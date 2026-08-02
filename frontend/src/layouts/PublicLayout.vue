@@ -18,7 +18,7 @@ const currentYear = new Date().getFullYear()
     <footer class="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 text-white py-12 md:py-16">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(249,115,22,0.15),_transparent_35%)]"></div>
       <div class="relative max-w-7xl mx-auto px-6 md:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           <!-- School Info -->
           <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
             <div class="flex items-center gap-3 mb-4">
@@ -62,23 +62,6 @@ const currentYear = new Date().getFullYear()
             </ul>
           </div>
 
-          <!-- Newsletter -->
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
-            <div class="flex flex-col items-start md:items-center text-left md:text-center">
-              <h4 class="font-semibold mb-3 text-white">Rester informé</h4>
-              <p class="text-sm text-gray-300 mb-4">Recevez les actualités de l'école</p>
-              <form class="flex w-full max-w-sm flex-col sm:flex-row gap-2">
-                <input 
-                  type="email" 
-                  placeholder="Votre email" 
-                  class="flex-1 px-3 py-2 rounded-lg border border-white/10 bg-gray-800/80 text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
-                />
-                <button type="submit" class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors text-sm font-semibold shadow-lg shadow-primary-500/20">
-                  S'abonner
-                </button>
-              </form>
-            </div>
-          </div>
         </div>
 
         <!-- Bottom Footer -->
