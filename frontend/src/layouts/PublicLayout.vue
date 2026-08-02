@@ -51,9 +51,12 @@ const currentYear = new Date().getFullYear()
             <ul class="space-y-2 text-sm text-gray-300">
               <li>05228-75634</li>
               <li>gsni2527@gmail.com</li>
-              <li class="mt-4">
+              <li class="mt-4 flex flex-wrap gap-3">
                 <a href="https://web.facebook.com/profile.php?id=100056328531139&sk=photos" target="_blank" class="transition-colors duration-200 hover:text-primary-500">
                   Facebook
+                </a>
+                <a href="https://www.instagram.com/la_nouvelleinstitution?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="transition-colors duration-200 hover:text-primary-500">
+                  Instagram
                 </a>
               </li>
             </ul>
@@ -61,18 +64,20 @@ const currentYear = new Date().getFullYear()
 
           <!-- Newsletter -->
           <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
-            <h4 class="font-semibold mb-4 text-white">Rester informé</h4>
-            <p class="text-sm text-gray-300 mb-4">Recevez les actualités de l'école</p>
-            <form class="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Votre email" 
-                class="flex-1 px-3 py-2 rounded-lg border border-white/10 bg-gray-800/80 text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
-              <button type="submit" class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors text-sm font-semibold shadow-lg shadow-primary-500/20">
-                S'abonner
-              </button>
-            </form>
+            <div class="flex flex-col items-start md:items-center text-left md:text-center">
+              <h4 class="font-semibold mb-3 text-white">Rester informé</h4>
+              <p class="text-sm text-gray-300 mb-4">Recevez les actualités de l'école</p>
+              <form class="flex w-full max-w-sm flex-col sm:flex-row gap-2">
+                <input 
+                  type="email" 
+                  placeholder="Votre email" 
+                  class="flex-1 px-3 py-2 rounded-lg border border-white/10 bg-gray-800/80 text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+                />
+                <button type="submit" class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors text-sm font-semibold shadow-lg shadow-primary-500/20">
+                  S'abonner
+                </button>
+              </form>
+            </div>
           </div>
         </div>
 
