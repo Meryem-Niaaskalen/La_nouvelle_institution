@@ -52,12 +52,12 @@ const strengths = [
   {
     title: 'Encadrement qualifié',
     description: 'Des enseignants expérimentés engagés dans chaque étape du parcours.',
-    icon: '',
+    icon: '🧑‍🏫',
   },
   {
     title: 'Effectifs maîtrisés',
     description: 'Des classes à taille humaine pour un véritable suivi individuel.',
-    icon: '',
+    icon: '👥',
   },
   {
     title: 'Pédagogie moderne',
@@ -67,7 +67,7 @@ const strengths = [
   {
     title: 'Cadre serein',
     description: 'Un environnement sécurisé et propice à l’épanouissement scolaire.',
-    icon: '',
+    icon: '🌿',
   },
 ]
 </script>
