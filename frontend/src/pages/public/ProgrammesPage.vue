@@ -7,28 +7,28 @@ const cycles = [
     subtitle: 'Éveil, créativité et premières découvertes.',
     label: '01',
     gradient: 'from-orange-400 to-orange-600',
-    icon: '',
+    icon: '🧸',
   },
   {
     title: 'Primaire',
     subtitle: 'Bases solides et curiosité intellectuelle.',
     label: '02',
     gradient: 'from-blue-500 to-blue-700',
-    icon: '�',
+    icon: '✏️',
   },
   {
     title: 'Collège',
     subtitle: 'Culture générale et autonomie.',
     label: '03',
     gradient: 'from-emerald-500 to-emerald-700',
-    icon: '�',
+    icon: '🎒',
   },
   {
     title: 'Lycée',
     subtitle: 'Ambition, performance et réussite.',
     label: '04',
     gradient: 'from-slate-600 to-slate-900',
-    icon: '',
+    icon: '🎓',
   },
 ]
 
