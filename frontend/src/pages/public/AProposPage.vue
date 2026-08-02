@@ -49,10 +49,9 @@ const stats = [
         </div>
 
         <div class="flex items-center justify-center">
-          <div class="rounded-[36px] border border-slate-200 bg-white p-8 shadow-large flex items-center gap-6 max-w-sm w-full">
-            <img src="/images/logo-school-3.png" alt="Logo La nouvelle institution" class="h-24 w-24 rounded-full border border-white/20 bg-white object-contain p-1" />
+          <div class="rounded-[36px] border border-slate-200 bg-white p-8 shadow-large flex flex-col items-center gap-4 max-w-sm w-full text-center">
+            <img src="/images/logo-school-3.png" alt="Logo La nouvelle institution" class="h-36 w-36 rounded-full border border-white/20 bg-white object-contain p-1" />
             <div>
-              <p class="text-sm text-slate-500">Notre identité</p>
               <h3 class="text-xl font-semibold text-slate-900">La nouvelle institution</h3>
               <p class="text-sm text-slate-600 mt-1">Exigence éducative · Innovation · Bienveillance</p>
             </div>
