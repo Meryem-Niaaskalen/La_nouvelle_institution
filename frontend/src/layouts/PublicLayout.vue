@@ -1,6 +1,9 @@
 ﻿<script setup>
 import { RouterView } from 'vue-router'
 import { Navigation } from '@/components'
+
+// dynamic current year for footer
+const currentYear = new Date().getFullYear()
 </script>
 
 <template>
@@ -73,12 +76,27 @@ import { Navigation } from '@/components'
         </div>
 
         <!-- Bottom Footer -->
-        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>&copy; 2024 La nouvelle institution. Tous droits réservés.</p>
-          <div class="flex gap-6 mt-4 md:mt-0">
-            <a href="#" class="hover:text-primary-500">Conditions d'utilisation</a>
-            <a href="#" class="hover:text-primary-500">Politique de confidentialité</a>
-            <a href="#" class="hover:text-primary-500">Mentions légales</a>
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-300">
+          <div class="flex items-center gap-4">
+            <p class="text-sm">&copy; {{ currentYear }} <span class="font-semibold">La nouvelle institution</span>. Tous droits réservés.</p>
+            <span class="hidden sm:inline-block h-4 w-px bg-gray-700 mx-3" aria-hidden="true"></span>
+            <div class="hidden sm:flex items-center gap-4 text-sm">
+              <a href="#" class="hover:text-primary-500">Conditions d'utilisation</a>
+              <a href="#" class="hover:text-primary-500">Politique de confidentialité</a>
+              <a href="#" class="hover:text-primary-500">Mentions légales</a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 mt-4 md:mt-0">
+            <a href="https://web.facebook.com/profile.php?id=100056328531139&sk=photos" target="_blank" aria-label="Facebook" class="hover:text-primary-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07C2 17.08 5.66 21.18 10.44 21.95v-6.99H8.08v-2.9h2.36V9.41c0-2.33 1.38-3.62 3.5-3.62.99 0 2.03.18 2.03.18v2.23h-1.14c-1.13 0-1.48.7-1.48 1.42v1.7h2.52l-.4 2.9h-2.12V21.95C18.34 21.18 22 17.08 22 12.07z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="hover:text-primary-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-3a1.5 1.5 0 11.001 3.001A1.5 1.5 0 0116.5 6z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="hover:text-primary-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1-3-.2-7.5-.2-7.5-.2h-.1s-4.5 0-7.5.2c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S.2 8 .2 9.8v4.4c0 1.8.3 3.6.3 3.6s.2 1.6.8 2.3c.8.9 1.8.9 2.3 1 1.7.1 7.1.2 7.1.2s4.4 0 7.4-.2c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.3.8-2.3s.3-1.8.3-3.6V9.8c0-1.8-.3-3.6-.3-3.6zM9.8 15.1V8.9l6.1 3.1-6.1 3.1z"/></svg>
+            </a>
           </div>
         </div>
       </div>
