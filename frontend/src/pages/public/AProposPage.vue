@@ -48,14 +48,14 @@ const stats = [
           </p>
         </div>
 
-        <div class="grid gap-4">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div
             v-for="stat in stats"
             :key="stat.id"
-            class="rounded-[24px] border border-slate-200 bg-slate-50 p-6 shadow-soft"
+            class="rounded-[24px] border border-slate-200 bg-white p-6 text-center shadow-soft"
           >
-            <p class="text-4xl font-semibold text-slate-900">{{ stat.value }}</p>
-            <p class="mt-3 text-sm uppercase tracking-[0.25em] text-slate-500">{{ stat.label }}</p>
+            <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">{{ stat.value }}</p>
+            <p class="mt-2 text-sm uppercase tracking-[0.12em] text-slate-500">{{ stat.label }}</p>
           </div>
         </div>
       </div>
