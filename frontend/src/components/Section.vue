@@ -71,13 +71,27 @@ defineProps({
 }
 
 .section-title {
-  @apply mx-auto max-w-3xl text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.02em] text-slate-900;
+    @apply mx-auto max-w-3xl text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-[-0.02em] text-slate-900 relative;
+    --accent: theme('colors.orange.400');
+    animation: sectionTitleIn .6s cubic-bezier(.2,.9,.3,1) both;
 }
 
 .section-subtitle {
-  @apply mx-auto max-w-2xl text-base sm:text-lg leading-8 text-slate-600;
+    @apply mx-auto max-w-2xl text-base sm:text-lg leading-8 text-slate-600;
+    opacity: .95;
+    transform-origin: center;
+    animation: sectionSubtitleIn .6s cubic-bezier(.2,.9,.3,1) .08s both;
 }
 
+@keyframes sectionTitleIn {
+  from { transform: translateY(18px) scale(.995); opacity: 0 }
+  to   { transform: translateY(0) scale(1); opacity: 1 }
+}
+
+@keyframes sectionSubtitleIn {
+  from { transform: translateY(8px); opacity: 0 }
+  to   { transform: translateY(0); opacity: 1 }
+}
 .section-dark .section-title {
   @apply text-white;
 }
