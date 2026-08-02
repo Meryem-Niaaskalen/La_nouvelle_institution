@@ -3,7 +3,7 @@ import { Section, Card, Badge } from '@/components'
 
 const values = [
   {
-    icon: '',
+    icon: '🏆',
     title: 'Excellence académique',
     description: 'Un encadrement exigeant et des parcours pédagogiques conçus pour former des leaders confiants et curieux.',
   },
@@ -13,7 +13,7 @@ const values = [
     description: 'Des classes interactives, des outils digitaux et des projets ancrés dans les enjeux du monde contemporain.',
   },
   {
-    icon: '',
+    icon: '🌱',
     title: 'Épanouissement humain',
     description: 'Une communauté bienveillante, ouverte et inclusive où chaque élève est encouragé à s’exprimer et à grandir.',
   },
