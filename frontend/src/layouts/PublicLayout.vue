@@ -20,7 +20,7 @@ const currentYear = new Date().getFullYear()
       <div class="relative max-w-7xl mx-auto px-6 md:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           <!-- School Info -->
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+          <div class="py-2">
             <div class="flex items-center gap-3 mb-4">
               <img src="/images/logo-school-3.png" alt="Logo La nouvelle institution" class="h-12 w-12 rounded-full border border-white/20 bg-white object-contain p-1 shadow-lg shadow-black/20" />
               <div>
@@ -34,7 +34,7 @@ const currentYear = new Date().getFullYear()
           </div>
 
           <!-- Quick Links -->
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+          <div class="py-2">
             <h4 class="font-semibold mb-4 text-white">Navigation</h4>
             <ul class="space-y-2 text-sm text-gray-300">
               <li><router-link to="/" class="transition-colors duration-200 hover:text-primary-500">Accueil</router-link></li>
@@ -46,7 +46,7 @@ const currentYear = new Date().getFullYear()
           </div>
 
           <!-- Contact Info -->
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+          <div class="py-2">
             <h4 class="font-semibold mb-4 text-white">Contact</h4>
             <ul class="space-y-2 text-sm text-gray-300">
               <li>05228-75634</li>
