@@ -23,35 +23,35 @@ const currentYear = new Date().getFullYear()
             <div class="flex items-center gap-3 mb-4">
               <img src="/images/logo-school-3.png" alt="Logo La nouvelle institution" class="h-12 w-12 rounded-full border border-white/20 bg-white object-contain p-1" />
               <div>
-                <h3 class="font-bold text-lg">La nouvelle institution</h3>
-                <p class="text-gray-400 text-sm">Éducation de qualité depuis 1997</p>
+                <h3 class="font-bold text-lg text-white">La nouvelle institution</h3>
+                <p class="text-gray-300 text-sm">Éducation de qualité depuis 1997</p>
               </div>
             </div>
-            <p class="text-gray-400 text-sm">Maternelle • Primaire • Collège • Lycée</p>
-            <p class="text-gray-400 text-sm mt-2">25 Rue Adawha El Fath 3</p>
-            <p class="text-gray-400 text-sm">Casablanca, Maroc</p>
+            <p class="text-gray-300 text-sm">Maternelle • Primaire • Collège • Lycée</p>
+            <p class="text-gray-300 text-sm mt-2">25 Rue Adawha El Fath 3</p>
+            <p class="text-gray-300 text-sm">Casablanca, Maroc</p>
           </div>
 
           <!-- Quick Links -->
           <div>
-            <h4 class="font-semibold mb-4">Navigation</h4>
-            <ul class="space-y-2 text-sm text-gray-400">
-              <li><router-link to="/" class="hover:text-primary-500">Accueil</router-link></li>
-              <li><router-link to="/a-propos" class="hover:text-primary-500">À propos</router-link></li>
-              <li><router-link to="/programmes" class="hover:text-primary-500">Programmes</router-link></li>
-              <li><router-link to="/admissions" class="hover:text-primary-500">Admissions</router-link></li>
-              <li><router-link to="/galerie" class="hover:text-primary-500">Galerie</router-link></li>
+            <h4 class="font-semibold mb-4 text-white">Navigation</h4>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li><router-link to="/" class="transition-colors hover:text-primary-500">Accueil</router-link></li>
+              <li><router-link to="/a-propos" class="transition-colors hover:text-primary-500">À propos</router-link></li>
+              <li><router-link to="/programmes" class="transition-colors hover:text-primary-500">Programmes</router-link></li>
+              <li><router-link to="/admissions" class="transition-colors hover:text-primary-500">Admissions</router-link></li>
+              <li><router-link to="/galerie" class="transition-colors hover:text-primary-500">Galerie</router-link></li>
             </ul>
           </div>
 
           <!-- Contact Info -->
           <div>
-            <h4 class="font-semibold mb-4">Contact</h4>
-            <ul class="space-y-2 text-sm text-gray-400">
-              <li> 05228-75634</li>
-              <li> gsni2527@gmail.com</li>
+            <h4 class="font-semibold mb-4 text-white">Contact</h4>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li>05228-75634</li>
+              <li>gsni2527@gmail.com</li>
               <li class="mt-4">
-                <a href="https://web.facebook.com/profile.php?id=100056328531139&sk=photos" target="_blank" class="hover:text-primary-500">
+                <a href="https://web.facebook.com/profile.php?id=100056328531139&sk=photos" target="_blank" class="transition-colors hover:text-primary-500">
                   Facebook
                 </a>
               </li>
@@ -60,8 +60,8 @@ const currentYear = new Date().getFullYear()
 
           <!-- Newsletter -->
           <div>
-            <h4 class="font-semibold mb-4">Rester informé</h4>
-            <p class="text-sm text-gray-400 mb-4">Recevez les actualités de l'école</p>
+            <h4 class="font-semibold mb-4 text-white">Rester informé</h4>
+            <p class="text-sm text-gray-300 mb-4">Recevez les actualités de l'école</p>
             <form class="flex gap-2">
               <input 
                 type="email" 
