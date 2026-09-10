@@ -34,7 +34,7 @@ const stats = [
       title="À propos de La nouvelle institution"
       subtitle="Un établissement de référence, conjuguant exigence éducative, innovation et bienveillance depuis plus de 25 ans."
     >
-      <div class="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] items-start">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1.25fr_0.75fr] items-start">
         <div class="rounded-[36px] border border-slate-200 bg-white p-12 shadow-large">
           <Badge label="Notre identité" class="mb-6" />
           <h2 class="text-3xl sm:text-4xl font-semibold text-slate-900 mb-5">Une pédagogie exigeante, une expérience humaine chaleureuse.</h2>
@@ -75,7 +75,7 @@ const stats = [
     </Section>
 
     <Section title="Mission & vision" subtitle="Une éducation construite autour de valeurs fortes et d’une ambition collective.">
-      <div class="grid gap-6 md:grid-cols-3">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         <div
           v-for="value in values"
           :key="value.title"
@@ -89,7 +89,7 @@ const stats = [
         </div>
       </div>
 
-      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <div class="rounded-[32px] border border-slate-200 bg-white p-8 shadow-large">
           <Badge label="Mission" class="mb-4" />
           <h3 class="text-2xl font-semibold text-slate-900 mb-3">Former des citoyens responsables et performants.</h3>

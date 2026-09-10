@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { Section, Input, Button, Card } from '@/components'
+import { sendContactMessage } from '@/services/api/school'
+
+const whatsappNumber = '212660026163'
 
 const form = ref({
   name: '',
@@ -11,6 +14,29 @@ const form = ref({
 })
 
 const submitted = ref(false)
+const sending = ref(false)
+const error = ref('')
+
+const getWhatsAppLink = (payload = {}) => {
+  const text = [
+    'Bonjour, je souhaite obtenir plus d’informations sur l’admission.',
+    payload.name ? `Nom: ${payload.name}` : '',
+    payload.email ? `Email: ${payload.email}` : '',
+    payload.phone ? `Téléphone: ${payload.phone}` : '',
+    payload.niveau ? `Niveau souhaité: ${payload.niveau}` : '',
+    payload.message ? `Message: ${payload.message}` : '',
+  ]
+    .filter(Boolean)
+    .join('\n')
+
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`
+}
+
+const openWhatsApp = (payload = form.value) => {
+  if (typeof window !== 'undefined') {
+    window.open(getWhatsAppLink(payload), '_blank', 'noopener,noreferrer')
+  }
+}
 
 const steps = [
   {
@@ -27,15 +53,50 @@ const steps = [
   },
 ]
 
-const submitForm = () => {
-  submitted.value = true
+const submitForm = async () => {
+  submitted.value = false
+  error.value = ''
+  sending.value = true
+
+  try {
+    const payload = {
+      name: form.value.name,
+      email: form.value.email,
+      phone: form.value.phone,
+      niveau: form.value.niveau,
+      message: form.value.message,
+    }
+
+    await sendContactMessage({
+      name: payload.name,
+      email: payload.email,
+      phone: payload.phone,
+      subject: `Demande d’admission - ${payload.niveau}`,
+      message: `Niveau souhaité : ${payload.niveau}\n\n${payload.message}`,
+    })
+
+    openWhatsApp(payload)
+    submitted.value = true
+    form.value = {
+      name: '',
+      email: '',
+      phone: '',
+      niveau: '',
+      message: '',
+    }
+  } catch (err) {
+    console.warn('Unable to send admission request', err)
+    error.value = 'Impossible d’envoyer la demande. Veuillez réessayer.'
+  } finally {
+    sending.value = false
+  }
 }
 </script>
 
 <template>
   <div class="bg-slate-50">
     <Section title="Admissions" subtitle="Un parcours clair, humain et professionnel pour intégrer notre établissement.">
-      <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-start">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-[1.05fr_0.95fr] items-start">
         <div class="rounded-[32px] border border-slate-200 bg-white p-10 shadow-large">
           <div class="inline-flex items-center gap-3 rounded-full border border-primary-200 bg-primary-50 px-4 py-2 text-sm font-semibold text-primary-700">
             Admission 2026
@@ -70,7 +131,7 @@ const submitForm = () => {
         </div>
       </div>
 
-      <div class="mt-12 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-start">
+      <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[1.05fr_0.95fr] items-start">
         <div class="rounded-[32px] border border-slate-200 bg-white p-10 shadow-large">
           <div class="inline-flex items-center gap-3 rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
             Pourquoi nous choisir
@@ -109,8 +170,9 @@ const submitForm = () => {
               placeholder="Précisez votre demande..."
               rows="4"
             />
-            <Button type="submit" label="Envoyer ma demande" class="w-full" />
+            <Button :disabled="sending" type="submit" label="Envoyer ma demande" class="w-full" />
             <p v-if="submitted" class="text-sm text-emerald-600">Merci, votre demande a bien été enregistrée.</p>
+            <p v-if="error" class="text-sm text-red-600">{{ error }}</p>
           </form>
         </Card>
       </div>

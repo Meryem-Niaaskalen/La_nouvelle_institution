@@ -81,7 +81,19 @@ const lightboxItem = ref(null)
 const isAllCategory = computed(() => ['all', 'tous', 'tout'].includes(String(activeCategory.value).toLowerCase()))
 
 const getImageUrl = (item) => {
-  return item?.image || item?.image_url || item?.url || item?.path || item?.src || '/images/school-front.jpg'
+  const raw = item?.image || item?.image_url || item?.url || item?.path || item?.src || '/images/school-front.jpg'
+  try {
+    // If the backend already returns percent-encoded paths, decode first
+    // then re-encode to avoid double-encoding `%` to `%25`.
+    const decoded = decodeURI(String(raw))
+    return encodeURI(decoded)
+  } catch (e) {
+    try {
+      return encodeURI(String(raw))
+    } catch (ee) {
+      return String(raw)
+    }
+  }
 }
 
 const filteredItems = computed(() => {

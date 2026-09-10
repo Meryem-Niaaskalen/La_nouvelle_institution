@@ -72,7 +72,7 @@ const aboutTimeline = [
     year: '2005',
     icon: 'graduation',
     period: 'Expansion pédagogique',
-    title: 'Plus de 25 ans d\'expérience',
+    title: 'Une pédagogie en expansion',
     description: 'Des générations d\'élèves formées, encadrées et préparées à réussir dans un monde en évolution.',
     items: ['Taux de réussite élevé', 'Reconnaissance académique', 'Développement des programmes'],
   },
@@ -205,7 +205,7 @@ onMounted(() => {
   <!-- Hero Section -->
   <Hero
     logo="/images/logo-school-3.png"
-    backgroundImage="/images/school-facade.png"
+    backgroundImage="/images/facade.png"
   />
 
   <!-- About Section -->
@@ -213,7 +213,7 @@ onMounted(() => {
     title="À propos"
     subtitle="Un cadre pédagogique moderne, rassurant et pensé pour l'épanouissement de chaque élève"
   >
-    <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
       <div class="space-y-6">
         <div class="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-4 py-2 text-sm font-semibold text-primary-700">
           <span>️</span>
@@ -251,7 +251,7 @@ onMounted(() => {
 
       <div class="rounded-[32px] border border-gray-200 bg-white p-3 shadow-large">
         <img
-          src="/images/school-facade.png"
+          src="/images/facade.png"
           alt="Présentation de l'établissement La nouvelle institution"
           class="h-[420px] w-full rounded-[24px] object-cover"
         />
@@ -384,15 +384,15 @@ onMounted(() => {
         class="testimonial-card"
         :hoverable="true"
         variant="outlined"
-        :customClass="`${testimonial.accent} border-l-4`"
+        :customClass="testimonial.accent"
       >
-        <div class="testimonial-top mb-6 flex flex-col gap-4 border-b border-slate-200/70 pb-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="testimonial-top mb-6 sm:mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p class="text-xs uppercase tracking-[0.28em] text-slate-500">{{ testimonial.role || 'Parent' }}</p>
+            <p class="text-xs uppercase tracking-[0.28em] text-orange-500">{{ testimonial.role || 'Parent' }}</p>
             <p class="mt-2 text-sm font-semibold text-slate-900">{{ testimonial.label }}</p>
           </div>
-          <div class="testimonial-score-chip inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-sm font-semibold text-slate-900 shadow-sm">
-            <span class="text-yellow-500">★</span>
+          <div class="testimonial-score-chip inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-sm font-semibold text-orange-700 shadow-sm">
+            <span class="text-orange-500">★</span>
             <span>{{ testimonial.score }}/5</span>
           </div>
         </div>
@@ -428,7 +428,7 @@ onMounted(() => {
             variant="primary"
             label="Demande d'admission"
             @click="$router.push('/admissions')"
-            customClass="min-w-[220px] bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 shadow-large"
+            customClass="w-full sm:min-w-[220px] bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 shadow-large"
           />
           <p class="mt-3 text-xs text-slate-500">Place limitée, admission rapide recommandée.</p>
         </div>
@@ -460,20 +460,44 @@ onMounted(() => {
 }
 
   .testimonial-card {
-    min-height: 260px;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2rem;
-    border: 1px solid rgba(148, 163, 184, 0.24);
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+    padding: 2.3rem 2.2rem 2.2rem;
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 46px rgba(15, 23, 42, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 26px 70px rgba(15, 23, 42, 0.1);
+    background: rgba(255, 255, 255, 0.95);
   }
 
   .testimonial-quote {
+    position: relative;
     line-height: 1.85;
     letter-spacing: 0.01em;
     color: #334155;
+    margin-top: 0.75rem;
+    font-size: 1.02rem;
+    padding-left: 0.7rem;
+  }
+
+  .testimonial-quote::before {
+    content: '“';
+    position: absolute;
+    top: -0.8rem;
+    left: 0;
+    font-size: 3.2rem;
+    line-height: 1;
+    color: rgba(245, 124, 0, 0.2);
+    font-weight: 700;
   }
 
   .testimonial-meta {
@@ -482,6 +506,7 @@ onMounted(() => {
 
   .testimonial-top {
     padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
   }
 
   .testimonial-chip {
@@ -493,6 +518,42 @@ onMounted(() => {
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
     padding: 0.65rem 0.95rem;
+  }
+
+  .cta-panel {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .testimonial-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .testimonial-card {
+      padding: 2rem 1.6rem;
+    }
+
+    .cta-panel {
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .testimonial-card {
+      padding: 1.75rem 1.4rem;
+    }
+
+    .testimonial-quote {
+      font-size: 0.96rem;
+    }
   }
 </style>
 

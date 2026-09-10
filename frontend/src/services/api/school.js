@@ -1,7 +1,17 @@
 import client from './client'
 
+export const getActualities = async () => {
+	const { data } = await client.get('/actualities')
+	return Array.isArray(data?.data) ? data.data : []
+}
+
 export const getPrograms = () => client.get('/programs')
 export const getProgramById = (id) => client.get(`/programs/${id}`)
+
+export const getAdminPrograms = () => client.get('/admin/programs')
+export const createAdminProgram = (data) => client.post('/admin/programs', data)
+export const updateAdminProgram = (id, data) => client.put(`/admin/programs/${id}`, data)
+export const deleteAdminProgram = (id) => client.delete(`/admin/programs/${id}`)
 
 export const getTeachers = () => client.get('/teachers')
 export const getTeacherById = (id) => client.get(`/teachers/${id}`)
@@ -19,3 +29,5 @@ export const getTestimonials = () => client.get('/testimonials')
 export const sendContactMessage = (data) => client.post('/contact/send', data)
 
 export const getPublicSettings = () => client.get('/settings/public')
+
+export const updateSetting = (key, data) => client.put(`/admin/settings/${key}`, data)

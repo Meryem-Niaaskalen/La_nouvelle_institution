@@ -22,7 +22,7 @@ const props = defineProps({
   stats: {
     type: Array,
     required: true,
-    validator: (arr) => arr.every((s) => s.id && s.icon && s.value && s.label),
+    validator: (arr) => arr.every((s) => s.id != null && s.icon != null && s.value != null && s.label != null),
   },
 })
 
@@ -53,23 +53,23 @@ onMounted(() => {
 }
 
 .stat-card {
-  @apply text-center p-8 rounded-lg bg-gray-50 border border-gray-200 hover:shadow-medium transition-smooth;
+  @apply rounded-3xl border border-slate-200 bg-white p-7 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl;
 }
 
 .stat-icon {
-  @apply text-4xl mb-4;
+  @apply mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-3xl bg-slate-100 text-2xl;
 }
 
 .stat-value {
-  @apply text-4xl md:text-5xl font-bold text-primary-500 mb-2;
+  @apply text-4xl font-semibold text-slate-900;
 }
 
 .stat-label {
-  @apply text-gray-600 font-semibold mb-1;
+  @apply text-primary-700 font-semibold mb-1;
 }
 
 .stat-suffix {
-  @apply text-gray-500 text-sm;
+  @apply text-primary-500 text-sm;
 }
 
 @media (max-width: 768px) {

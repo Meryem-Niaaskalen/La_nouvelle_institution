@@ -42,6 +42,7 @@ const currentYear = new Date().getFullYear()
               <li><router-link to="/programmes" class="transition-colors duration-200 hover:text-primary-500">Programmes</router-link></li>
               <li><router-link to="/admissions" class="transition-colors duration-200 hover:text-primary-500">Admissions</router-link></li>
               <li><router-link to="/galerie" class="transition-colors duration-200 hover:text-primary-500">Galerie</router-link></li>
+              <li><router-link to="/actualites" class="transition-colors duration-200 hover:text-primary-500">Actualités</router-link></li>
             </ul>
           </div>
 

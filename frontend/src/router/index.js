@@ -37,6 +37,12 @@ const routes = [
         meta: { title: 'Galerie' },
       },
       {
+        path: 'actualites',
+        name: 'actualites',
+        component: () => import('@/pages/public/ActualitesPage.vue'),
+        meta: { title: 'Actualités' },
+      },
+      {
         path: 'contact',
         name: 'contact',
         component: () => import('@/pages/public/ContactPage.vue'),
@@ -61,6 +67,30 @@ const routes = [
         component: () => import('@/pages/admin/DashboardPage.vue'),
         meta: { title: 'Tableau de bord', requiresAuth: true },
       },
+      {
+        path: 'messages',
+        name: 'admin-messages',
+        component: () => import('@/pages/admin/MessagesPage.vue'),
+        meta: { title: 'Messages', requiresAuth: true },
+      },
+      {
+        path: 'galerie',
+        name: 'admin-galerie',
+        component: () => import('@/pages/admin/GaleriePage.vue'),
+        meta: { title: 'Galerie', requiresAuth: true },
+      },
+      {
+        path: 'actualites',
+        name: 'admin-actualites',
+        component: () => import('@/pages/admin/ActualitesPage.vue'),
+        meta: { title: 'Actualités', requiresAuth: true },
+      },
+      {
+        path: 'contacts',
+        name: 'admin-contacts',
+        component: () => import('@/pages/admin/ContactsPage.vue'),
+        meta: { title: 'Contacts', requiresAuth: true },
+      },
     ],
   },
 ]
@@ -75,7 +105,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   const auth = useAuthStore()
-  const title = to.meta.title ? `${to.meta.title} — La nouvelle institution` : 'La nouvelle institution'
+  const title = to.meta.title ? `${to.meta.title} | La nouvelle institution` : 'La nouvelle institution'
   document.title = title
 
   if (to.meta.requiresAuth && !auth.isAuthenticated()) {

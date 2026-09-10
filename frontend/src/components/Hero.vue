@@ -12,7 +12,7 @@
         </div>
 
         <p class="hero-description">
-          Maternelle, Primaire, Collège et Lycée — une école moderne, bienveillante et tournée vers l'excellence.
+          Maternelle, Primaire, Collège et Lycée, une école moderne, bienveillante et tournée vers l'excellence.
         </p>
 
         <div class="hero-levels" aria-label="Niveaux scolaires">
@@ -23,14 +23,14 @@
         </div>
 
         <div class="hero-ctas">
-          <a href="#programs" class="hero-button hero-button-primary">
+          <router-link to="/programmes" class="hero-button hero-button-primary">
             <span>Découvrir nos programmes</span>
             <ArrowRight :size="18" stroke-width="2.5" />
-          </a>
-          <a href="#contact" class="hero-button hero-button-secondary">
+          </router-link>
+          <router-link to="/contact" class="hero-button hero-button-secondary">
             <span>Nous contacter</span>
             <ArrowRight :size="18" stroke-width="2.5" />
-          </a>
+          </router-link>
         </div>
       </div>
 
@@ -82,6 +82,7 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import gsap from 'gsap'
 import { ArrowRight, GraduationCap, Trophy, Users } from 'lucide-vue-next'
 import { useGSAP } from '../useGSAP'
@@ -89,9 +90,11 @@ import { useGSAP } from '../useGSAP'
 const props = defineProps({
   backgroundImage: {
     type: String,
-    default: '/images/school-facade.png',
+    default: '/images/facade.png',
   },
 })
+
+const components = { RouterLink }
 
 const imgOffset = ref({ x: 0, y: 0 })
 const prefersReduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -176,6 +179,15 @@ onMounted(() => {
   margin: 0 auto;
   padding: 28px 0 72px 82px;
   isolation: isolate;
+}
+
+/* Layout: place copy on the left and image on the right, keeping the original visual proximity */
+.hero-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 620px) 1fr;
+  gap: 36px;
+  align-items: start;
+  position: relative;
 }
 
 .hero-copy {
@@ -312,22 +324,22 @@ onMounted(() => {
 }
 
 .hero-image-wrap {
+  /* Make the image bleed to the right edge while keeping the section overflow hidden */
   position: absolute;
-  top: 10px;
-  right: -6px;
-  width: 63%;
-  height: calc(100% - 20px);
-  min-height: 700px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: clamp(420px, 48%, 820px);
+  z-index: 1;
+  display: block;
   overflow: hidden;
-  border-radius: 0;
-  background: transparent;
 }
 
 .hero-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 46%;
+  object-position: 60% 46%;
   filter: saturate(1) contrast(1.02) brightness(1.01);
   opacity: 0;
   transition: transform 0.25s ease-out;
@@ -421,10 +433,10 @@ onMounted(() => {
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: 140%;
-  height: 220px;
-  transform: translateX(-50%);
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
   background: #f57c00;
 }
 
@@ -444,6 +456,7 @@ onMounted(() => {
 @media (max-width: 1100px) {
   .hero-shell {
     padding: 70px 20px 180px;
+    display: block;
   }
 
   .hero-image-wrap {
@@ -452,11 +465,13 @@ onMounted(() => {
     height: 520px;
     min-height: 520px;
     margin-top: 28px;
-    border-radius: 0;
+    border-radius: 28px;
+    right: 0;
+    top: 20px;
   }
 
   .hero-image-wrap::before {
-    background: linear-gradient(180deg, rgba(250, 250, 249, 0.36), rgba(250, 250, 249, 0.02));
+    background: linear-gradient(180deg, rgba(250, 250, 249, 0.72), rgba(250, 250, 249, 0.45));
   }
 
   .hero-copy {
@@ -465,9 +480,110 @@ onMounted(() => {
   }
 
   .hero-feature-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     width: calc(100% - 32px);
     margin-top: -20px;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-shell {
+    padding: 60px 18px 150px;
+  }
+
+  .hero-feature-grid {
+    gap: 16px;
+  }
+}
+
+/* Small-screen composition fixes: keep the important facade area visible */
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-shell {
+    padding: 50px 16px 120px;
+  }
+
+  .hero-copy {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 14vw, 3.6rem);
+  }
+
+  .hero-date-row {
+    margin-top: 18px;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-levels {
+    gap: 10px;
+  }
+
+  .hero-level-pill {
+    padding: 9px 16px;
+    font-size: 0.95rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .hero-button {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .hero-image-wrap {
+    height: 340px;
+    min-height: 340px;
+  }
+
+  .hero-photo {
+    object-position: center 44%;
+  }
+
+  .hero-feature-grid {
+    grid-template-columns: 1fr;
+    width: calc(100% - 24px);
+    margin-top: -16px;
+  }
+
+  .hero-wave {
+    bottom: -80px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-photo {
+    object-position: 30% 28%;
+  }
+
+  .hero-shell {
+    padding-left: clamp(1rem, 6vw, 2rem);
+    padding-right: clamp(1rem, 6vw, 2rem);
+    min-height: 420px;
+  }
+
+  .hero-copy {
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 16vw, 3.2rem);
   }
 }
 

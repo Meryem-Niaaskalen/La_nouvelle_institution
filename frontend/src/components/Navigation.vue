@@ -65,6 +65,7 @@ const props = defineProps({
       { path: '/programmes', label: 'Programmes' },
       { path: '/admissions', label: 'Admissions' },
       { path: '/galerie', label: 'Galerie' },
+      { path: '/actualites', label: 'Actualités' },
       { path: '/contact', label: 'Contact' },
     ],
   },
@@ -244,6 +245,7 @@ onUnmounted(() => {
 .navbar-actions {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .navbar-cta {

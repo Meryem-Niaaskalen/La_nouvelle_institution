@@ -1,6 +1,71 @@
 <script setup>
+import { computed, onMounted, ref } from 'vue'
 import { Section, GalleryGrid } from '@/components'
-import { galleryItems, galleryCategories } from '@/data/gallery'
+import { getGalleryCategories } from '@/services/api/school'
+
+const categories = ref([])
+const galleryItems = ref([])
+
+const categoryLabelMap = {
+  evenements: 'Événements',
+  culture: 'Culture & Vie scolaire',
+  'activite-para': 'Activités parascolaires',
+  competitions: 'Compétitions',
+  'sorties-scolaire': 'Sorties scolaires',
+  sports: 'Sports',
+  'tournoi-de-foot': 'Tournoi de football',
+}
+
+const getCategoryLabel = (category) => {
+  const slug = String(category?.slug || category?.name || category).toLowerCase().trim()
+  if (slug === 'sport') {
+    return null
+  }
+  return categoryLabelMap[slug] || String(category?.name || category?.slug || 'Catégorie')
+}
+
+const loadGallery = async () => {
+  try {
+    const res = await getGalleryCategories()
+    const cats = res?.data?.data || res?.data || []
+
+    const items = []
+    const catNames = []
+
+    for (const cat of cats) {
+      const label = getCategoryLabel(cat)
+      if (!label) {
+        continue
+      }
+
+      const images = Array.isArray(cat.images) ? cat.images : []
+      for (const img of images) {
+        items.push({
+          ...img,
+          title: img.title || '',
+          description: img.description || '',
+          date: img.created_at || img.createdAt || '',
+          image: img.image_url || img.image || img.url || '',
+          image_url: img.image_url || img.image || '',
+          category: label,
+        })
+      }
+
+      catNames.push(label)
+    }
+
+    categories.value = catNames
+    galleryItems.value = items
+  } catch (e) {
+    console.warn('Unable to load public gallery', e)
+    categories.value = ['Tous']
+    galleryItems.value = []
+  }
+}
+
+const galleryCount = computed(() => galleryItems.value.length)
+
+onMounted(loadGallery)
 </script>
 
 <template>
@@ -9,7 +74,7 @@ import { galleryItems, galleryCategories } from '@/data/gallery'
       title="Galerie photo"
       subtitle="Des instants authentiques et signifiants, révélateurs de notre vie scolaire."
     >
-      <div class="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] items-start">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-[1.25fr_0.75fr] items-start">
         <div class="rounded-[32px] border border-slate-200 bg-white p-10 shadow-large">
           <div class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-600">
             Galerie institutionnelle
@@ -33,7 +98,7 @@ import { galleryItems, galleryCategories } from '@/data/gallery'
         <div class="grid gap-4">
           <div class="rounded-[28px] border border-slate-200 bg-sky-50 p-8 shadow-soft">
             <p class="text-sm uppercase tracking-[0.28em] text-slate-500">Photos</p>
-            <p class="mt-3 text-3xl font-semibold text-slate-900">{{ galleryItems.length }}</p>
+            <p class="mt-3 text-3xl font-semibold text-slate-900">{{ galleryCount }}</p>
             <p class="mt-4 text-sm leading-6 text-slate-600">Images sélectionnées pour exprimer l’élégance et la cohérence du projet.</p>
           </div>
           <div class="rounded-[28px] border border-slate-200 bg-amber-50 p-8 shadow-soft">
@@ -51,11 +116,11 @@ import { galleryItems, galleryCategories } from '@/data/gallery'
             <h3 class="mt-3 text-3xl font-semibold text-slate-900">Un ensemble cohérent, élégant et inspirant.</h3>
           </div>
           <div class="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700">
-            <span class="text-slate-900">{{ galleryItems.length }} photos</span>
+            <span class="text-slate-900">{{ galleryCount }} photos</span>
           </div>
         </div>
 
-        <GalleryGrid :items="galleryItems" :categories="galleryCategories" category-field="category" />
+        <GalleryGrid :items="galleryItems" :categories="categories" category-field="category" />
       </div>
     </Section>
   </div>

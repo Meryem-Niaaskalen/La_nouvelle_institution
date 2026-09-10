@@ -19,11 +19,17 @@
   --color-info: #2196F3;
 
   --font-sans: 'Poppins', 'Inter', system-ui, sans-serif;
+  --font-serif: 'Poppins', 'Inter', system-ui, sans-serif;
   --font-heading: 'Poppins', 'Inter', system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --spacing-section: 100px;
   --spacing-section-sm: 60px;
+
+  --brand-accent: #F57C00;
+  --brand-accent-soft: rgba(245, 124, 0, 0.12);
+  --brand-accent-strong: #D84315;
+  --brand-heading: 'Poppins', 'Inter', system-ui, sans-serif;
 
   --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
@@ -67,11 +73,34 @@
     font-family: var(--font-sans);
     color: #334155;
     background-color: #f8fafc;
+    box-sizing: border-box;
+  }
+
+  /* Make all elements inherit box-sizing for predictable layout */
+  *, *::before, *::after {
+    box-sizing: inherit;
   }
 
   body {
     @apply bg-slate-50 text-slate-700 antialiased;
     font-family: var(--font-sans);
+    /* Prevent horizontal scrolling across the site */
+    overflow-x: hidden;
+  }
+
+  /* Ensure images scale responsively and preserve important composition */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+  }
+
+  /* School photos or hero images should preserve important areas - use object-fit + object-position in components */
+  .school-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   h1,
@@ -80,35 +109,36 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-heading);
+    font-family: var(--brand-heading);
     color: #0f172a;
     letter-spacing: -0.03em;
     margin: 0;
   }
 
   h1 {
-    font-size: 3.75rem;
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
     line-height: 1.05;
     font-weight: 700;
     margin-bottom: 1rem;
+    color: var(--brand-accent-strong);
   }
 
   h2 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 4.5vw, 3rem);
     line-height: 1.1;
     font-weight: 600;
     margin-bottom: 0.75rem;
   }
 
   h3 {
-    font-size: 2.25rem;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
     line-height: 1.2;
     font-weight: 600;
     margin-bottom: 0.75rem;
   }
 
   h4 {
-    font-size: 1.75rem;
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
     line-height: 1.3;
     font-weight: 600;
     margin-bottom: 0.75rem;
@@ -187,11 +217,19 @@
   }
 
   .container-section {
-    @apply py-section px-6 md:px-8;
+    padding-inline: clamp(1rem, 5vw, 5rem);
+    padding-block: var(--spacing-section);
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
   }
 
   .container-section-sm {
-    @apply py-section-sm px-6 md:px-8;
+    padding-inline: clamp(0.75rem, 4vw, 3rem);
+    padding-block: var(--spacing-section-sm);
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
   }
 
   .flex-center {
