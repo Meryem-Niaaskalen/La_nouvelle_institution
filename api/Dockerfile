@@ -4,7 +4,6 @@ WORKDIR /var/www/html
 
 ENV APP_ENV=production \
     APP_DEBUG=false \
-    PORT=10000 \
     COMPOSER_ALLOW_SUPERUSER=1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -50,6 +49,6 @@ RUN composer dump-autoload --optimize \
     && chmod -R 775 storage bootstrap/cache \
     && chmod +x start.sh
 
-EXPOSE 10000
+EXPOSE 8080
 
 ENTRYPOINT ["./start.sh"]
