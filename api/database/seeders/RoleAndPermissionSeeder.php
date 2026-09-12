@@ -12,7 +12,8 @@ class RoleAndPermissionSeeder extends Seeder
     {
         // Reset cached roles and permissions
         app()['cache']->forget('spatie.permission.cache');
-
+        Role::whereIn('name', ['admin', 'teacher', 'user'])->delete();
+        Permission::query()->delete();
         // Create permissions
         $permissions = [
             // Users
