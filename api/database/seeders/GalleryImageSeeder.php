@@ -51,11 +51,8 @@ class GalleryImageSeeder extends Seeder
                     ['image' => $imagePath],
                     [
                         'category_id' => $categoryId,
-                        'image_path' => $imagePath,
                         'title' => pathinfo($file->getFilename(), PATHINFO_FILENAME),
-                        'sort_order' => $index + 1,
                         'order' => $index + 1,
-                        'is_published' => true,
                         'is_visible' => true,
                     ],
                 );

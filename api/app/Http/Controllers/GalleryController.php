@@ -185,7 +185,6 @@ class GalleryController extends Controller
         } else {
             $validated['image'] = $validated['image'];
         }
-        $validated['image_path'] = $validated['image'];
 
         if ($request->hasFile('thumbnail_file')) {
             $validated['thumbnail'] = $request->file('thumbnail_file')->store('gallery/thumbnails', 'public');
@@ -216,9 +215,6 @@ class GalleryController extends Controller
 
         if ($request->hasFile('image_file')) {
             $validated['image'] = $request->file('image_file')->store('gallery/images', 'public');
-        }
-        if (array_key_exists('image', $validated)) {
-            $validated['image_path'] = $validated['image'];
         }
 
         if ($request->hasFile('thumbnail_file')) {

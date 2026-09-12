@@ -15,14 +15,11 @@ class GalleryImage extends Model
     protected $fillable = [
         'category_id',
         'image',
-        'image_path',
         'thumbnail',
         'title',
         'description',
         'order',
         'is_visible',
-        'sort_order',
-        'is_published',
     ];
 
     protected function casts(): array
@@ -30,8 +27,6 @@ class GalleryImage extends Model
         return [
             'is_visible' => 'boolean',
             'order' => 'integer',
-            'is_published' => 'boolean',
-            'sort_order' => 'integer',
         ];
     }
 

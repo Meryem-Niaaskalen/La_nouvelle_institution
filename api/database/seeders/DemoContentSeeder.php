@@ -178,11 +178,11 @@ class DemoContentSeeder extends Seeder
         }
 
         $galleryCategories = [
-            ['slug' => 'activite-para', 'name' => 'Activité para', 'sort_order' => 1],
-            ['slug' => 'competitions', 'name' => 'Compétitions', 'sort_order' => 2],
-            ['slug' => 'sorties-scolaire', 'name' => 'Sorties scolaire', 'sort_order' => 3],
-            ['slug' => 'sports', 'name' => 'Sports', 'sort_order' => 4],
-            ['slug' => 'tournoi-de-foot', 'name' => 'Tournoi de foot', 'sort_order' => 5],
+            ['slug' => 'activite-para', 'name' => 'Activité para', 'order' => 1],
+            ['slug' => 'competitions', 'name' => 'Compétitions', 'order' => 2],
+            ['slug' => 'sorties-scolaire', 'name' => 'Sorties scolaire', 'order' => 3],
+            ['slug' => 'sports', 'name' => 'Sports', 'order' => 4],
+            ['slug' => 'tournoi-de-foot', 'name' => 'Tournoi de foot', 'order' => 5],
         ];
 
         foreach ($galleryCategories as $category) {
@@ -261,7 +261,6 @@ class DemoContentSeeder extends Seeder
                 [
                     'category_id' => $categoryId,
                     'title' => $title,
-                    'image_path' => $imagePath,
                     'order' => $index + 1,
                     'is_visible' => true,
                 ]
