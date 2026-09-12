@@ -38,13 +38,13 @@ class RoleAndPermissionSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            Permission::firstOrCreate(['name' => $permission, 'guard_name' => 'api']);
+            Permission::firstOrCreate(['name' => $permission, 'guard_name' => 'web']);
         }
 
         // Create roles
-        $admin = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'api']);
-        $teacher = Role::firstOrCreate(['name' => 'teacher', 'guard_name' => 'api']);
-        $user = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'api']);
+        $admin = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
+        $teacher = Role::firstOrCreate(['name' => 'teacher', 'guard_name' => 'web']);
+        $user = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'web']);
 
         // Admin has all permissions
         $admin->syncPermissions(Permission::all());
