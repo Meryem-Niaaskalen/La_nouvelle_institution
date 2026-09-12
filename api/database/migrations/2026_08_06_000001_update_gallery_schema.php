@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -39,10 +38,6 @@ return new class extends Migration
             }
         });
 
-        DB::statement('UPDATE gallery_categories SET "order" = sort_order WHERE "order" = 0;');
-        DB::statement('UPDATE gallery_images SET "order" = sort_order WHERE "order" = 0;');
-        DB::statement("UPDATE gallery_images SET image = image_path WHERE image IS NULL OR image = '';");
-        DB::statement('UPDATE gallery_images SET is_visible = is_published WHERE is_visible = false;');
     }
 
     public function down(): void
