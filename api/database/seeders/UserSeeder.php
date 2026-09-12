@@ -15,24 +15,22 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Admin Utilisateur',
                 'password' => bcrypt('password123'),
-                'status' => 'active',
+                'is_active' => true,
             ]
         );
+
         $admin->assignRole('admin');
 
-        // Create sample users
-        $users = [
+        // Create sample user
+        $user = User::firstOrCreate(
+            ['email' => 'nouvel.admin@nouvelle.school'],
             [
                 'name' => 'Nouvel Admin',
-                'email' => 'nouvel.admin@nouvelle.school',
                 'password' => bcrypt('password'),
-                'phone' => '+212 5 22 87 56 34',
-            ],
-        ];
+                'is_active' => true,
+            ]
+        );
 
-        foreach ($users as $userData) {
-            $user = User::firstOrCreate(['email' => $userData['email']], $userData);
-            $user->assignRole('user');
-        }
+        $user->assignRole('user');
     }
 }
