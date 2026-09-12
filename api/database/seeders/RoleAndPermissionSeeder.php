@@ -10,10 +10,7 @@ class RoleAndPermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        // Reset cached roles and permissions
         app()['cache']->forget('spatie.permission.cache');
-        Role::whereIn('name', ['admin', 'teacher', 'user'])->delete();
-        Permission::query()->delete();
         // Create permissions
         $permissions = [
             // Users
@@ -24,6 +21,8 @@ class RoleAndPermissionSeeder extends Seeder
             'manage_gallery', 'view_gallery', 'create_gallery', 'edit_gallery', 'delete_gallery',
             // Activities
             'manage_activities', 'view_activities', 'create_activities', 'edit_activities', 'delete_activities',
+            // Actualities
+            'manage_actualities',
             // Programs
             'manage_programs', 'view_programs', 'create_programs', 'edit_programs', 'delete_programs',
             // Testimonials
@@ -48,7 +47,7 @@ class RoleAndPermissionSeeder extends Seeder
         $user = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'web']);
 
         // Admin has all permissions
-        $admin->syncPermissions(Permission::all());
+        $admin->syncPermissions(Permission::where('guard_name', 'web')->get());
 
         // Teacher permissions
         $teacherPermissions = [

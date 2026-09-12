@@ -10,11 +10,11 @@ class GalleryCategorySeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['name' => 'Salles de classe', 'slug' => 'salles-de-classe', 'description' => 'Nos salles de classe modernes', 'order' => 1],
-            ['name' => 'Événements', 'slug' => 'evenements', 'description' => 'Événements scolaires et célébrations', 'order' => 2],
-            ['name' => 'Activités sportives', 'slug' => 'activites-sportives', 'description' => 'Sports et événements sportifs', 'order' => 3],
-            ['name' => 'Projets étudiants', 'slug' => 'projets-etudiants', 'description' => 'Projets réalisés par les étudiants', 'order' => 4],
-            ['name' => 'Vie scolaire', 'slug' => 'vie-scolaire', 'description' => 'Moments de la vie quotidienne à l\'école', 'order' => 5],
+            ['name' => 'Activité para', 'slug' => 'activite-para', 'description' => 'Activités parascolaires', 'order' => 1],
+            ['name' => 'Compétitions', 'slug' => 'competitions', 'description' => 'Compétitions et concours scolaires', 'order' => 2],
+            ['name' => 'Sorties scolaire', 'slug' => 'sorties-scolaire', 'description' => 'Sorties et visites scolaires', 'order' => 3],
+            ['name' => 'Sports', 'slug' => 'sports', 'description' => 'Activités et événements sportifs', 'order' => 4],
+            ['name' => 'Tournoi de foot', 'slug' => 'tournoi-de-foot', 'description' => 'Tournoi de football', 'order' => 5],
         ];
 
         foreach ($categories as $category) {

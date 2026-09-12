@@ -54,7 +54,7 @@ class ContactController extends Controller
 
     public function messages(): JsonResponse
     {
-        if (!auth()->user()->can('messages.manage')) {
+        if (!auth()->user()->can('manage_contact')) {
             throw new AuthorizationException();
         }
 
@@ -73,7 +73,7 @@ class ContactController extends Controller
 
     public function updateMessage(ContactMessage $contactMessage, Request $request): JsonResponse
     {
-        if (!auth()->user()->can('messages.manage')) {
+        if (!auth()->user()->can('manage_contact')) {
             throw new AuthorizationException();
         }
 
@@ -96,7 +96,7 @@ class ContactController extends Controller
 
     public function destroyMessage(ContactMessage $contactMessage): JsonResponse
     {
-        if (!auth()->user()->can('messages.manage')) {
+        if (!auth()->user()->can('manage_contact')) {
             throw new AuthorizationException();
         }
 

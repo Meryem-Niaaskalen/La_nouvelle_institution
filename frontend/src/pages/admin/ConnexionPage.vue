@@ -12,7 +12,7 @@
       <form class="mt-10 space-y-5" @submit.prevent="submitLogin">
         <div class="space-y-2">
           <label class="block text-sm font-semibold text-slate-700" for="email">Email</label>
-          <input id="email" v-model="form.email" type="email" class="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100" placeholder="admin@lanouvelleinstitution.ma" />
+          <input id="email" v-model="form.email" type="email" class="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100" placeholder="admin@nouvelle.school" />
         </div>
 
         <div class="space-y-2">
@@ -45,10 +45,6 @@ const error = ref('')
 const submitLogin = async () => {
   error.value = ''
   try {
-    await fetch('/sanctum/csrf-cookie', {
-      credentials: 'include',
-    })
-
     const { data } = await api.post(
       '/auth/login',
       new URLSearchParams({

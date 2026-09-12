@@ -22,7 +22,7 @@ export const getActivitiesByCategory = (slug) => client.get(`/activities/categor
 export const getActivityById = (id) => client.get(`/activities/${id}`)
 
 export const getGalleryCategories = () => client.get('/gallery/categories')
-export const getGalleryImages = (categoryId) => client.get(`/gallery/categories/${categoryId}/images`)
+export const getGalleryImages = (categoryId) => client.get(`/gallery/${categoryId}/images`)
 
 export const getTestimonials = () => client.get('/testimonials')
 

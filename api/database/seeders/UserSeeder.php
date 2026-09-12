@@ -9,28 +9,28 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Create admin user
         $admin = User::firstOrCreate(
             ['email' => 'admin@nouvelle.school'],
             [
                 'name' => 'Admin Utilisateur',
                 'password' => bcrypt('password123'),
                 'is_active' => true,
+                'email_verified_at' => now(),
             ]
         );
 
-        $admin->assignRole('admin');
+        $admin->syncRoles(['admin']);
 
-        // Create sample user
-        $user = User::firstOrCreate(
+        $demoUser = User::firstOrCreate(
             ['email' => 'nouvel.admin@nouvelle.school'],
             [
                 'name' => 'Nouvel Admin',
-                'password' => bcrypt('password'),
+                'password' => bcrypt('password123'),
                 'is_active' => true,
+                'email_verified_at' => now(),
             ]
         );
 
-        $user->assignRole('user');
+        $demoUser->syncRoles(['user']);
     }
 }

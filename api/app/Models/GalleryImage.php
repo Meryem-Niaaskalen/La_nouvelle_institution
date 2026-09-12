@@ -21,6 +21,8 @@ class GalleryImage extends Model
         'description',
         'order',
         'is_visible',
+        'sort_order',
+        'is_published',
     ];
 
     protected function casts(): array
@@ -28,6 +30,8 @@ class GalleryImage extends Model
         return [
             'is_visible' => 'boolean',
             'order' => 'integer',
+            'is_published' => 'boolean',
+            'sort_order' => 'integer',
         ];
     }
 
@@ -38,11 +42,11 @@ class GalleryImage extends Model
 
     public function scopePublished(Builder $query): Builder
     {
-        return $query->where('is_published', true);
+        return $query->where('is_visible', true);
     }
 
     public function scopeOrdered(Builder $query): Builder
     {
-        return $query->orderBy('sort_order')->orderByDesc('created_at');
+        return $query->orderBy('order')->orderByDesc('created_at');
     }
 }

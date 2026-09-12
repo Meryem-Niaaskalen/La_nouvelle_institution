@@ -29,7 +29,7 @@ class AuthController extends Controller
             ]);
         }
 
-        if ($user->status === 'inactive' || $user->status === 'suspended') {
+        if ($user->is_active === false) {
             throw ValidationException::withMessages([
                 'email' => ['Ce compte est désactivé.'],
             ]);
@@ -61,9 +61,7 @@ class AuthController extends Controller
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
-                'phone' => $user->phone,
-                'avatar' => $user->avatar,
-                'status' => $user->status,
+                'is_active' => (bool) $user->is_active,
                 'roles' => $user->getRoleNames(),
                 'permissions' => $user->getAllPermissions()->pluck('name'),
             ],

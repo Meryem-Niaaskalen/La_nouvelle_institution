@@ -10,7 +10,7 @@ class GalleryImageResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
-        $imageUrl = $this->image ?: $this->image_path;
+        $imageUrl = $this->image;
         if ($imageUrl) {
             if (!str_starts_with($imageUrl, 'http') && !str_starts_with($imageUrl, '/')) {
                 $imageUrl = Storage::disk('public')->url($imageUrl);

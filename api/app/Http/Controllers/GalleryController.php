@@ -181,10 +181,11 @@ class GalleryController extends Controller
         ]);
 
         if ($request->hasFile('image_file')) {
-            $validated['image_path'] = $request->file('image_file')->store('gallery/images', 'public');
+            $validated['image'] = $request->file('image_file')->store('gallery/images', 'public');
         } else {
-            $validated['image_path'] = $validated['image'];
+            $validated['image'] = $validated['image'];
         }
+        $validated['image_path'] = $validated['image'];
 
         if ($request->hasFile('thumbnail_file')) {
             $validated['thumbnail'] = $request->file('thumbnail_file')->store('gallery/thumbnails', 'public');
@@ -214,8 +215,9 @@ class GalleryController extends Controller
         ]);
 
         if ($request->hasFile('image_file')) {
-            $validated['image_path'] = $request->file('image_file')->store('gallery/images', 'public');
-        } elseif (array_key_exists('image', $validated)) {
+            $validated['image'] = $request->file('image_file')->store('gallery/images', 'public');
+        }
+        if (array_key_exists('image', $validated)) {
             $validated['image_path'] = $validated['image'];
         }
 

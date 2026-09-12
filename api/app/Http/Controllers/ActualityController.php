@@ -91,7 +91,7 @@ class ActualityController extends Controller
 
     private function authorizeManagement(): void
     {
-        if (!auth()->user()->can('gallery.manage') && !auth()->user()->can('manage_gallery')) {
+        if (!auth()->user()->can('manage_actualities')) {
             throw new AuthorizationException();
         }
     }
