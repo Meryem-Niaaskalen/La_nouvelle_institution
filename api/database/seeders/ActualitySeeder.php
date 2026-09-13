@@ -73,7 +73,7 @@ class ActualitySeeder extends Seeder
                 continue;
             }
 
-            Actuality::query()->updateOrCreate(
+            Actuality::withTrashed()->updateOrCreate(
                 ['title' => $actuality['title']],
                 $actuality,
             );
