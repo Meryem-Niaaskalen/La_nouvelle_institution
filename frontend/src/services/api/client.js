@@ -1,15 +1,5 @@
 import axios from 'axios'
 
-const getCookie = (name) => {
-  if (typeof document === 'undefined') return null
-  const value = `; ${document.cookie}`
-  const parts = value.split(`; ${name}=`)
-  if (parts.length === 2) {
-    return decodeURIComponent(parts.pop().split(';').shift())
-  }
-  return null
-}
-
 const resolveApiBaseUrl = () => {
   if (typeof window !== 'undefined' && import.meta.env.DEV) {
     return '/api/v1'
@@ -22,24 +12,12 @@ const resolveApiBaseUrl = () => {
   return '/api/v1'
 }
 
-const resolveSanctumBaseUrl = () => {
-  if (typeof window !== 'undefined' && import.meta.env.DEV) {
-    return '/'
-  }
-
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL.replace(/\/api(?:\/v1)?\/?$/i, '')
-  }
-
-  return '/'
-}
-
 const api = axios.create({
   baseURL: resolveApiBaseUrl(),
   headers: {
     Accept: 'application/json',
   },
-  withCredentials: true,
+  withCredentials: false,
 })
 
 api.interceptors.request.use((config) => {
@@ -48,10 +26,6 @@ api.interceptors.request.use((config) => {
     config.headers.Authorization = `Bearer ${token}`
   }
 
-  const csrfToken = getCookie('XSRF-TOKEN')
-  if (csrfToken) {
-    config.headers['X-XSRF-TOKEN'] = csrfToken
-  }
   config.headers['X-Requested-With'] = 'XMLHttpRequest'
 
   if (!(config.data instanceof FormData)) {
@@ -61,5 +35,4 @@ api.interceptors.request.use((config) => {
   return config
 })
 
-export const sanctumBaseUrl = resolveSanctumBaseUrl()
 export default api

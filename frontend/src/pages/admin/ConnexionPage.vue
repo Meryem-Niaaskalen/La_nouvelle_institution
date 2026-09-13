@@ -39,24 +39,16 @@ import api from '@/services/api/client'
 const router = useRouter()
 const route = useRoute()
 const auth = useAuthStore()
-const form = reactive({ email: 'admin@lanouvelleinstitution.ma', password: 'password' })
+const form = reactive({ email: 'admin@nouvelle.school', password: 'password123' })
 const error = ref('')
 
 const submitLogin = async () => {
   error.value = ''
   try {
-    const { data } = await api.post(
-      '/auth/login',
-      new URLSearchParams({
-        email: form.email,
-        password: form.password,
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      },
-    )
+    const { data } = await api.post('/auth/login', {
+      email: form.email,
+      password: form.password,
+    })
     const token = data?.data?.token
     const user = data?.data?.user
 
