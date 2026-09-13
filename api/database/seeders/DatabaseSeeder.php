@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             SubjectSeeder::class,
             ProgramSeeder::class,
             ActivityCategorySeeder::class,
+            ActualitySeeder::class,
             GalleryCategorySeeder::class,
             GalleryImageSeeder::class,
             TestimonialSeeder::class,
