@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Storage;
+use App\Support\PublicStorageUrl;
 
 class TeacherResource extends JsonResource
 {
@@ -16,7 +16,7 @@ class TeacherResource extends JsonResource
             'title' => $this->title,
             'subject' => $this->subject,
             'bio' => $this->bio,
-            'photo_url' => $this->photo_path ? Storage::disk('public')->url($this->photo_path) : null,
+            'photo_url' => PublicStorageUrl::make($this->photo_path, $request),
             'sort_order' => $this->sort_order,
             'is_published' => $this->is_published,
         ];

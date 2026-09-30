@@ -60,6 +60,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { resolveImageUrl } from '@/services/api/imageUrl'
 
 const props = defineProps({
   items: {
@@ -82,18 +83,7 @@ const isAllCategory = computed(() => ['all', 'tous', 'tout'].includes(String(act
 
 const getImageUrl = (item) => {
   const raw = item?.image || item?.image_url || item?.url || item?.path || item?.src || '/images/school-front.jpg'
-  try {
-    // If the backend already returns percent-encoded paths, decode first
-    // then re-encode to avoid double-encoding `%` to `%25`.
-    const decoded = decodeURI(String(raw))
-    return encodeURI(decoded)
-  } catch (e) {
-    try {
-      return encodeURI(String(raw))
-    } catch (ee) {
-      return String(raw)
-    }
-  }
+  return resolveImageUrl(raw, '/images/school-front.jpg')
 }
 
 const filteredItems = computed(() => {

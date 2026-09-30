@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Storage;
+use App\Support\PublicStorageUrl;
 
 class ProgramResource extends JsonResource
 {
@@ -18,7 +18,7 @@ class ProgramResource extends JsonResource
             'summary' => $this->summary,
             'description' => $this->when($request->routeIs('*.show') || isset($this->description), $this->description),
             'icon' => $this->icon,
-            'image_url' => $this->image_path ? Storage::disk('public')->url($this->image_path) : null,
+            'image_url' => PublicStorageUrl::make($this->image_path, $request),
             'sort_order' => $this->sort_order,
             'is_published' => $this->is_published,
             'features' => [],

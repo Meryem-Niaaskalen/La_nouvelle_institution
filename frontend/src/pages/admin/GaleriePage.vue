@@ -177,7 +177,7 @@
           >
               <div class="relative aspect-[4/3] bg-slate-100 flex items-center justify-center overflow-hidden">
               <img
-                :src="image.thumbnail_url || image.image_url || image.image || '/images/school-front.jpg'"
+                :src="resolveImageUrl(image.thumbnail_url || image.image_url || image.image, '/images/school-front.jpg')"
                 :alt="image.title || 'Image de galerie'"
                 class="max-h-full max-w-full object-contain"
               />
@@ -327,6 +327,7 @@ import {
   updateAdminGalleryImage,
 } from '@/services/api/admin'
 import AdminPageHeader from '@/components/admin.js'
+import { resolveImageUrl } from '@/services/api/imageUrl'
 
 const categories = ref([])
 const selectedCategory = ref(null)

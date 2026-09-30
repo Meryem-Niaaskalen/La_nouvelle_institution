@@ -9,15 +9,15 @@
         </div>
       </div>
 
-      <form class="mt-10 space-y-5" @submit.prevent="submitLogin">
+      <form class="mt-10 space-y-5" autocomplete="off" @submit.prevent="submitLogin">
         <div class="space-y-2">
           <label class="block text-sm font-semibold text-slate-700" for="email">Email</label>
-          <input id="email" v-model="form.email" type="email" class="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100" placeholder="admin@nouvelle.school" />
+          <input id="email" v-model="form.email" type="email" autocomplete="off" class="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100" placeholder="Saisissez votre adresse email" />
         </div>
 
         <div class="space-y-2">
           <label class="block text-sm font-semibold text-slate-700" for="password">Mot de passe</label>
-          <input id="password" v-model="form.password" type="password" class="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100" placeholder="••••••••" />
+          <input id="password" v-model="form.password" type="password" autocomplete="off" class="w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary-500 focus:ring-2 focus:ring-primary-100" placeholder="Saisissez votre mot de passe" />
         </div>
 
         <p v-if="error" class="rounded-3xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{{ error }}</p>
@@ -39,7 +39,7 @@ import api from '@/services/api/client'
 const router = useRouter()
 const route = useRoute()
 const auth = useAuthStore()
-const form = reactive({ email: 'admin@nouvelle.school', password: 'password123' })
+const form = reactive({ email: '', password: '' })
 const error = ref('')
 
 const submitLogin = async () => {

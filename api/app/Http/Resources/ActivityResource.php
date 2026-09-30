@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Storage;
+use App\Support\PublicStorageUrl;
 
 class ActivityResource extends JsonResource
 {
@@ -16,7 +16,7 @@ class ActivityResource extends JsonResource
             'title' => $this->title,
             'excerpt' => $this->excerpt,
             'body' => $this->when(isset($this->body), $this->body),
-            'cover_url' => $this->cover_path ? Storage::disk('public')->url($this->cover_path) : null,
+            'cover_url' => PublicStorageUrl::make($this->cover_path, $request),
             'event_date' => $this->event_date?->toDateString(),
             'is_featured' => $this->is_featured,
             'is_published' => $this->is_published,
@@ -27,7 +27,7 @@ class ActivityResource extends JsonResource
             ]),
             'images' => $this->whenLoaded('images', fn () => $this->images->map(fn ($image) => [
                 'id' => $image->id,
-                'url' => Storage::disk('public')->url($image->image_path),
+                'url' => PublicStorageUrl::make($image->image_path, $request),
                 'alt_text' => $image->alt_text,
             ])),
         ];

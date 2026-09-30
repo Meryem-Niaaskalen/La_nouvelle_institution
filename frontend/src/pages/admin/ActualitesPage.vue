@@ -20,7 +20,7 @@
       <div ref="actualitiesScroll" class="actualities-carousel flex snap-x snap-mandatory gap-5 overflow-x-auto px-1 pb-4 sm:px-2">
       <article v-for="actuality in actualities" :key="actuality.id" class="grid min-w-full snap-center overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md lg:grid-cols-[42%_58%]">
         <div class="flex min-h-[22rem] items-center justify-center bg-slate-100 p-6 md:min-h-[30rem] lg:min-h-[32rem] lg:p-8">
-          <img :src="actuality.image_url || '/images/school-front.jpg'" :alt="actuality.title" class="max-h-[36rem] w-full object-contain" />
+          <img :src="resolveImageUrl(actuality.image_url, '/images/school-front.jpg')" :alt="actuality.title" class="max-h-[36rem] w-full object-contain" />
         </div>
         <div class="flex min-w-0 flex-col justify-center gap-6 p-6 md:p-10 lg:p-12">
           <div class="flex flex-wrap items-center gap-3">
@@ -91,6 +91,7 @@ import { onMounted, reactive, ref } from 'vue'
 import { CalendarDays, CheckCircle2, ChevronLeft, ChevronRight, Eye, Pencil, Pin, Plus, Trash2 } from 'lucide-vue-next'
 import { Input, Modal } from '@/components/admin'
 import { createAdminActuality, deleteAdminActuality, getAdminActualities, updateAdminActuality } from '@/services/api/admin'
+import { resolveImageUrl } from '@/services/api/imageUrl'
 
 const actualities = ref([])
 const loading = ref(true)

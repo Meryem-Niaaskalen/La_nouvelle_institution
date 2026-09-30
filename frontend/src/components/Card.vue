@@ -11,7 +11,7 @@
   >
     <div v-if="$slots.image || image" class="card-image">
       <slot name="image">
-        <img :src="image" :alt="title" class="w-full h-full object-cover" />
+        <img :src="resolveImageUrl(image)" :alt="title" class="w-full h-full object-cover" />
       </slot>
     </div>
 
@@ -34,6 +34,8 @@
 </template>
 
 <script setup>
+import { resolveImageUrl } from '@/services/api/imageUrl'
+
 defineProps({
   variant: {
     type: String,

@@ -25,7 +25,7 @@
       <template v-else>
         <article class="group grid min-w-0 overflow-hidden rounded-[20px] border border-slate-200/80 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)] lg:grid-cols-[48%_52%]">
           <div class="flex min-h-[19rem] min-w-0 items-center justify-center bg-slate-100 p-5 sm:min-h-[27rem] sm:p-8 lg:min-h-[clamp(32rem,68vh,42rem)] lg:p-10">
-            <img :src="featured.image_url || '/images/school-front.jpg'" :alt="featured.title" class="max-h-full w-full object-contain transition duration-500 group-hover:scale-[1.015]" />
+            <img :src="resolveImageUrl(featured.image_url, '/images/school-front.jpg')" :alt="featured.title" class="max-h-full w-full object-contain transition duration-500 group-hover:scale-[1.015]" />
           </div>
           <div class="flex min-w-0 flex-col justify-center p-7 sm:p-10 lg:p-16">
             <div class="flex flex-wrap items-center gap-3">
@@ -61,7 +61,7 @@
           <div v-if="filteredActualities.length" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <article v-for="actuality in filteredActualities" :key="actuality.id" class="group overflow-hidden rounded-[18px] border border-slate-200/80 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(15,23,42,0.1)]">
               <div class="flex aspect-[4/3] items-center justify-center overflow-hidden bg-slate-100 p-5">
-                <img :src="actuality.image_url || '/images/school-front.jpg'" :alt="actuality.title" class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.025]" loading="lazy" />
+                <img :src="resolveImageUrl(actuality.image_url, '/images/school-front.jpg')" :alt="actuality.title" class="h-full w-full object-contain transition duration-500 group-hover:scale-[1.025]" loading="lazy" />
               </div>
               <div class="p-5">
                 <span class="inline-flex rounded-full bg-orange-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-primary-700">{{ actuality.category }}</span>
@@ -98,7 +98,7 @@
           <article class="relative grid max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-2xl bg-white shadow-2xl lg:grid-cols-[42%_58%]">
             <button type="button" aria-label="Fermer l’article" class="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-xl text-slate-600 shadow-sm transition hover:bg-white hover:text-slate-900" @click="closeArticle">&times;</button>
             <div class="flex min-h-[22rem] items-center justify-center bg-slate-100 p-6 sm:min-h-[30rem] lg:min-h-[36rem] lg:p-10">
-              <img :src="selectedArticle.image_url || '/images/school-front.jpg'" :alt="selectedArticle.title" class="max-h-[34rem] w-full object-contain" />
+              <img :src="resolveImageUrl(selectedArticle.image_url, '/images/school-front.jpg')" :alt="selectedArticle.title" class="max-h-[34rem] w-full object-contain" />
             </div>
             <div class="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
               <div class="flex flex-wrap items-center gap-3">
@@ -121,6 +121,7 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { ArrowRight, Bell, CalendarDays, Facebook, Instagram, Newspaper } from 'lucide-vue-next'
 import { getActualities } from '@/services/api/school'
+import { resolveImageUrl } from '@/services/api/imageUrl'
 
 const actualities = ref([])
 const loading = ref(true)

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Storage;
+use App\Support\PublicStorageUrl;
 
 class TestimonialResource extends JsonResource
 {
@@ -15,7 +15,7 @@ class TestimonialResource extends JsonResource
             'author_name' => $this->author_name,
             'author_role' => $this->author_role,
             'content' => $this->content,
-            'photo_url' => $this->photo_path ? Storage::disk('public')->url($this->photo_path) : null,
+            'photo_url' => PublicStorageUrl::make($this->photo_path, $request),
             'rating' => $this->rating,
             'sort_order' => $this->sort_order,
             'is_published' => $this->is_published,
